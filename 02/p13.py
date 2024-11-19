@@ -5,19 +5,22 @@
 
 from p10 import execute_unix_command
 
+
 def func_py(path):
-    with open("col1.txt", "r") as f:
+    with open("outputs/col1.txt", "r") as f:
         cols1 = f.readlines()
-    with open("col2.txt", "r") as f:
+    with open("outputs/col2.txt", "r") as f:
         cols2 = f.readlines()
-    
+
     with open(path, "w") as f:
         for col1, col2 in zip(cols1, cols2):
             f.write(col1[:-1] + "\t" + col2[:-1] + "\n")
 
+
 def func_unix():
     args = ["paste", "col1.txt", "col2.txt"]
     return execute_unix_command(args)
+
 
 def main():
     path = "popular-names13.txt"
@@ -25,10 +28,11 @@ def main():
 
     test = func_unix()
     with open(path, "r") as f:
-        if(f.read() == test):
+        if (f.read() == test):
             print("Successed")
         else:
             print("Failed")
+
 
 if __name__ == '__main__':
     main()

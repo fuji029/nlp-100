@@ -5,6 +5,7 @@
 
 from p10 import execute_unix_command
 
+
 def func_py(path):
     f = open(path, 'r')
     rows = f.readlines()
@@ -13,17 +14,19 @@ def func_py(path):
         row = list(row.split('\t'))
         cols[0].append(row[0])
         cols[1].append(row[1])
-    
-    f = open('./col1.txt', 'w')
+
+    f = open('./outputs/col1.txt', 'w')
     f.write("\n".join(cols[0]) + "\n")
 
-    f = open('./col2.txt', 'w')
+    f = open('./outputs/col2.txt', 'w')
     f.write("\n".join(cols[1]) + "\n")
+
 
 def func_unix(path):
     arg1 = ['cut', '-f', '1', path]
     arg2 = ['cut', '-f', '2', path]
     return execute_unix_command(arg1), execute_unix_command(arg2)
+
 
 def main():
     path = './popular-names.txt'
@@ -33,17 +36,18 @@ def main():
 
     f = open("col1.txt", "r")
     data = f.read()
-    if(data != test1):
+    if (data != test1):
         print("Failed : col1.txt")
         return
-    
+
     f = open("col2.txt", "r")
     data = f.read()
-    if(data != test2):
+    if (data != test2):
         print("Failed : col2.txt")
         return
-    
+
     print("Successed")
+
 
 if __name__ == '__main__':
     main()
