@@ -47,7 +47,7 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build .
+        jupyter-book build 03/ch03.ipynb
 
     # Upload the book's HTML as an artifact
     - name: Upload artifact
